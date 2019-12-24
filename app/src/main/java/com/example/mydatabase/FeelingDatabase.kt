@@ -6,7 +6,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Feeling::class), version = 1)
+// if want to insert more than 1 table, put (entities = [Feeling::class], ...  )
+@Database(entities = [Feeling::class], version = 1)
 abstract class FeelingDatabase : RoomDatabase() {
     //Instance of DAO
     abstract fun feelingDao() : FeelingDao
