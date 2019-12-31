@@ -13,8 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewModerate"
         app:layout_constraintEnd_toStartOf="@+id/imageViewModerate"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewModerate"
         app:srcCompat="@drawable/ic_sentiment_satisfied_black_24dp" />
 
@@ -22,6 +24,7 @@
         android:id="@+id/imageViewModerate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,17 +37,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewModerate"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewModerate"
         app:layout_constraintTop_toTopOf="@+id/imageViewModerate"
         app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_24dp" />
 
-    <TextView
-        android:id="@+id/textViewRemark"
-        android:layout_width="366dp"
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/remark"
+        android:layout_marginTop="151dp"
+        android:hint="Save"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRemark" />
+
+    <EditText
+        android:id="@+id/editTextRemark"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/remark"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewModerate" />

@@ -1,5 +1,7 @@
 package com.example.mydatabase
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -46,11 +48,36 @@ class MainActivity : AppCompatActivity() {
         )
 
         fab.setOnClickListener {view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this,
+                AddActivity::class.java)
+
+            startActivityForResult(intent, REQUEST_CODE)
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                val _mode = data?.getIntExtra(
+                    AddActivity.EXTRA_MODE, 0
+                )
+
+                val _remark = data?.getStringExtra(
+                    AddActivity.EXTRA_REMARK
+                )
+
+                val feeling = Feeling(
+                    id = 0,
+                    mode = _mode!!,
+                    remarks = _remark!!
+                )
+
+                //Insert a new record to the database
+                feelingViewModel.insertFeeling((feeling))
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -66,5 +93,9 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        const val REQUEST_CODE = 1
     }
 }

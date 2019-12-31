@@ -20,7 +20,8 @@ class FeelingViewModel(application: Application): AndroidViewModel(application) 
     }
 
     // A coroutine function
-    fun insertFeeling(feeling: Feeling) = viewModelScope.launch {
+    fun insertFeeling(feeling: Feeling)
+            = viewModelScope.launch {
         repository.insertFeeling(feeling)
     }
 }

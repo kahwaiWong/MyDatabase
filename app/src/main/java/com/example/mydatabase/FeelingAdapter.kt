@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.internal.NavigationMenuItemView
 import java.text.SimpleDateFormat
 
 class FeelingAdapter internal constructor (context: Context )
@@ -41,7 +43,13 @@ class FeelingAdapter internal constructor (context: Context )
             .format(feelingRec.created_at)
     }
 
-    internal fun setFeeling(feelings: List<Feeling>){
-        this.feelings = feelings
+    fun setFeeling(feeling: List<Feeling>){
+        this.feelings = feeling
+        notifyDataSetChanged()
     }
+
+    //inner class FeelingViewHolder(itemView: BottomNavigationItemView){
+     //   val textViewMode : TextView = itemView.findViewById(R.id.textViewMode)
+     //   val textViewRemark : TextView = itemView.findViewById(R.id.textViewRemark)
+     //   val textViewDate : TextView = itemView.findViewById(R.id.textViewDate)
 }
